@@ -76,4 +76,35 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+// Specialized card variants
+const HoverCard = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-xl border bg-card text-card-foreground shadow-card transition-all duration-300 hover:shadow-glow hover:-translate-y-2 cursor-pointer",
+      className
+    )}
+    {...props}
+  />
+))
+HoverCard.displayName = "HoverCard"
+
+const GlassCard = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-foreground shadow-card",
+      className
+    )}
+    {...props}
+  />
+))
+GlassCard.displayName = "GlassCard"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, HoverCard, GlassCard }
