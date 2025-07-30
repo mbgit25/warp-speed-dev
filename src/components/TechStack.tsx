@@ -1,14 +1,24 @@
 import { GlassCard } from "@/components/ui/card";
+import { 
+  ReactIcon, 
+  NextIcon, 
+  TypeScriptIcon, 
+  TailwindIcon, 
+  NodeIcon, 
+  MongoIcon, 
+  FirebaseIcon, 
+  VercelIcon 
+} from "@/components/TechIcons";
 
 const technologies = [
-  { name: "React", logo: "⚛️", description: "Frontend Library" },
-  { name: "Next.js", logo: "▲", description: "React Framework" },
-  { name: "TypeScript", logo: "TS", description: "Type Safety" },
-  { name: "Tailwind CSS", logo: "🎨", description: "Styling" },
-  { name: "Node.js", logo: "📗", description: "Backend Runtime" },
-  { name: "MongoDB", logo: "🍃", description: "Database" },
-  { name: "Firebase", logo: "🔥", description: "Cloud Platform" },
-  { name: "Vercel", logo: "▲", description: "Deployment" }
+  { name: "React", icon: ReactIcon, description: "Frontend Library", color: "text-blue-400" },
+  { name: "Next.js", icon: NextIcon, description: "React Framework", color: "text-white" },
+  { name: "TypeScript", icon: TypeScriptIcon, description: "Type Safety", color: "text-blue-600" },
+  { name: "Tailwind CSS", icon: TailwindIcon, description: "Styling", color: "text-teal-400" },
+  { name: "Node.js", icon: NodeIcon, description: "Backend Runtime", color: "text-green-500" },
+  { name: "MongoDB", icon: MongoIcon, description: "Database", color: "text-green-600" },
+  { name: "Firebase", icon: FirebaseIcon, description: "Cloud Platform", color: "text-orange-500" },
+  { name: "Vercel", icon: VercelIcon, description: "Deployment", color: "text-white" }
 ];
 
 const TechStack = () => {
@@ -25,19 +35,22 @@ const TechStack = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-          {technologies.map((tech, index) => (
-            <GlassCard 
-              key={index}
-              className="p-6 text-center hover:bg-white/10 transition-all duration-300 cursor-pointer group"
-              style={{animationDelay: `${index * 0.1}s`}}
-            >
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                {tech.logo}
-              </div>
-              <h3 className="font-semibold text-sm mb-1">{tech.name}</h3>
-              <p className="text-xs text-muted-foreground">{tech.description}</p>
-            </GlassCard>
-          ))}
+          {technologies.map((tech, index) => {
+            const IconComponent = tech.icon;
+            return (
+              <GlassCard 
+                key={index}
+                className="p-6 text-center hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <div className={`w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 ${tech.color}`}>
+                  <IconComponent />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">{tech.name}</h3>
+                <p className="text-xs text-muted-foreground">{tech.description}</p>
+              </GlassCard>
+            );
+          })}
         </div>
 
         <div className="mt-16 text-center">

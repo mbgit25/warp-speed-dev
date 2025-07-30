@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const Hero = () => {
+  const projectsCount = useCountUp({ end: 150, duration: 2500 });
+  const satisfactionCount = useCountUp({ end: 98, duration: 2000 });
+  const experienceCount = useCountUp({ end: 5, duration: 1500 });
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -49,15 +54,15 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 slide-up" style={{animationDelay: '0.6s'}}>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">150+</div>
+              <div ref={projectsCount.ref} className="text-3xl md:text-4xl font-bold gradient-text">{projectsCount.count}+</div>
               <div className="text-muted-foreground">Projects Delivered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">98%</div>
+              <div ref={satisfactionCount.ref} className="text-3xl md:text-4xl font-bold gradient-text">{satisfactionCount.count}%</div>
               <div className="text-muted-foreground">Client Satisfaction</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">5+</div>
+              <div ref={experienceCount.ref} className="text-3xl md:text-4xl font-bold gradient-text">{experienceCount.count}+</div>
               <div className="text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
