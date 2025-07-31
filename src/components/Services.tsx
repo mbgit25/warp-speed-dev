@@ -55,33 +55,36 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <HoverCard 
-              key={index} 
-              className="p-8 bg-card/50 backdrop-blur-sm border-border/50"
-              style={{animationDelay: `${index * 0.1}s`}}
+            <div
+              key={index}
+              className="service-card glare-effect p-8 rounded-xl border border-border/20 backdrop-blur-sm animate-fade-in"
+              style={{
+                animationDelay: `${index * 0.15}s`,
+                animationFillMode: 'both'
+              }}
             >
-              <CardContent className="p-0">
+              <div className="relative z-10">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mr-4">
-                    <service.icon className="h-6 w-6 text-white" />
+                  <div className="service-icon w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                    <service.icon className="h-7 w-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold">{service.title}</h3>
+                  <h3 className="text-xl font-bold text-foreground">{service.title}</h3>
                 </div>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
                   {service.description}
                 </p>
 
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      {feature}
+                    <li key={featureIndex} className="flex items-center text-sm text-foreground/90">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="font-medium">{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </CardContent>
-            </HoverCard>
+              </div>
+            </div>
           ))}
         </div>
       </div>
